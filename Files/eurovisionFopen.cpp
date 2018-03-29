@@ -8,10 +8,10 @@ using namespace std;
 string getCountry(FILE *in){
     string country;
     char ch;
-    fgets(&ch, 2, in);
+    ch = fgetc(in);
     while (ch != ','){
         country += ch;
-        fgets(&ch, 2, in);
+        ch = fgetc(in);
     }
     return country;
 }
@@ -19,11 +19,11 @@ string getCountry(FILE *in){
 int getScore(int n, FILE *in){
     char ch;
     int score = 0;
-    fgets(&ch, 2, in);
+    ch = fgetc(in);
     while (ch != ',' && ch != '\n' && !feof(in)){
         int numOfCh = ch - '0';
         score += score * 10 + numOfCh;
-        fgets(&ch, 2, in);
+        ch = fgetc(in);
     }
     return score;
 }
